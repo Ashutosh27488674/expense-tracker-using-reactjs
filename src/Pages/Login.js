@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/AuthProvider";
 import styles from "./Login.module.css";
 import { signInValidation } from "../utils/validate";
@@ -19,7 +19,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const { signin } = useAuth();
+  const { signin,user } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -57,6 +57,10 @@ const Login = () => {
     inputsError.passwordError ? styles["form-control-error"] : ""
   }`;
 
+  if(user)
+  {
+    return <Navigate to="/" />
+  }
   return (
     <div className={styles.container}>
       <div className={styles["form-box"]}>

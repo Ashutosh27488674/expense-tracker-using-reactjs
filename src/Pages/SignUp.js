@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/AuthProvider";
 import { signUpValidation } from "../utils/validate";
 import styles from "./Login.module.css";
@@ -24,7 +24,7 @@ const SignUp = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const { signup } = useAuth();
+  const { signup,user } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -68,6 +68,10 @@ const SignUp = () => {
   const confirmPasswordClasses = `${styles["form-control"]} ${
     inputsError.confirmPasswordError ? styles["form-control-error"] : ""
   }`;
+  if(user)
+  {
+    return <Navigate to="/" />
+  }
   return (
     <div className={styles.container}>
       <div className={styles["form-box"]}>

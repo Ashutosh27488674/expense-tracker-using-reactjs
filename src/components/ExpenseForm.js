@@ -10,8 +10,7 @@ const ExpenseForm = () => {
         amount:''
     })
     const {addToTransaction} = useBudget();
-    // const {user}=useAuth();
-    // const {uid}=user;
+  
 
     const handleChange = (e) => {
         const {name,value} = e.target;
@@ -35,7 +34,7 @@ const ExpenseForm = () => {
         if(!formIsValid) {
           return ;
         }
-        addToTransaction(null,expenseData);
+        addToTransaction(expenseData);
         setExpeseData({
             ...expenseData,
             title:"",

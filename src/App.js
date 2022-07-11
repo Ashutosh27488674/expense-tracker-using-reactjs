@@ -7,15 +7,18 @@ import {Routes ,Route} from 'react-router-dom';
 import Login from './Pages/Login';
 import Home from './Pages/Home';
 import SignUp from './Pages/SignUp';
+import PrivateRoute from './components/routes/PrivateRoute';
 
 const App = () => {
   return (
-    <BudgetProvider>
+    <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />}/>
+          <Route path='/login' element={<Login /> } />
+        <Route path="/" element={<PrivateRoute/>}>
+          <Route path="/" element={<BudgetProvider ><Home /></BudgetProvider>}/>
+        </Route>
+          <Route path='/signup' element={<SignUp />}/>
       </Routes>
       <ToastContainer
         position="top-right"
@@ -29,7 +32,7 @@ const App = () => {
         pauseOnHover
         theme='colored'
       />
-    </BudgetProvider>
+    </>
   )
 }
 

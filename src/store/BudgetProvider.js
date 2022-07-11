@@ -24,12 +24,12 @@ const BudgetProvider = (props) => {
     const [transactions,setTransactions] = useState([]);
     const [income,setIncome] = useState(0)
     const [expense , setExpense] = useState(0)
-    // const {user}=useAuth();
-    // const {uid}=user;
+    const {user}=useAuth();
+    const {uid}=user;
     useEffect(() => {
         const fetchTransactions = async() => {
             try {
-                const res = await fetch(url+`/${'123'}.json`);
+                const res = await fetch(url+`/${uid}.json`);
                 if(!res.ok) {
                     throw new Error("Failed to fetch the transactions")
                 }
@@ -48,7 +48,7 @@ const BudgetProvider = (props) => {
             }
         }
         fetchTransactions()
-    },[])
+    },[uid])
     
     useEffect(() => {
         const newIncome = findFilteredSum(transactions,"income");
@@ -57,9 +57,9 @@ const BudgetProvider = (props) => {
         setExpense(newExpense)
     },[transactions])
 
-    const addToTransaction = async(userId,transaction) => {
+    const addToTransaction = async(transaction) => {
         try {
-            const res = await fetch(url+`/${userId}.json`,{
+            const res = await fetch(url+`/${uid}.json`,{
                 method:"post",
                 body : JSON.stringify(transaction)
             });
@@ -79,9 +79,9 @@ const BudgetProvider = (props) => {
             return;
         }
     }
-    const deleteFromTransaction = async(userId,id) => {
+    const deleteFromTransaction = async(id) => {
         try {
-            const res = await fetch(url+`/${userId}/${id}.json`,{
+            const res = await fetch(url+`/${uid}/${id}.json`,{
                 method:"delete"
             });
             if(!res.ok) {
