@@ -1,0 +1,96 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+
+}
+.form-box{
+    display: block;
+    margin: auto;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 1rem;
+    width: 35%;
+
+}
+.heading{
+    text-align: center;
+
+}
+.form-control{
+    display:flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+.form-control label{
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+
+}
+.form-control input{
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #adb0b1;
+}
+.form-control input:focus{
+    outline: none;
+}
+.form-btn{
+    display: block;
+    margin: 1rem auto;
+    outline: none;
+    border: 1px solid #adb0b1;
+    padding: 0.5rem 2rem;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    background: none;
+    cursor: pointer;
+
+}
+.create-account-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.create-account-button a{
+    text-decoration: none;
+    color: black;
+}
+.create-account-button h5{
+    margin: 0;
+}
+.form-control-error p {
+    color: red;
+  }
+  
+  .form-control-error p {
+    margin: 0;
+    padding-top: 0.25rem;
+    font-size: 0.75rem;
+  }
+  
+  .form-control-error input {
+    border: 1px solid #a81111;
+    box-shadow: 0px 0px 3px inset #f80000;
+  }
+  
+  .error {
+    text-align: center;
+    font-size: 1.25rem;
+    color: red;
+  }
+  
+  .success {
+    text-align: center;
+    font-size: 1.25rem;
+    color: rgb(15, 102, 7);
+    width: 18.875rem;
+    word-wrap: break-word;
+  }
+  
+  .form-btn:disabled {
+      cursor: not-allowed;
+  }

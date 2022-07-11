@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {toast} from "react-toastify"
+import { useAuth } from "./AuthProvider";
 
 const BudgetContext = createContext( {
     transactions : [],
@@ -23,10 +24,12 @@ const BudgetProvider = (props) => {
     const [transactions,setTransactions] = useState([]);
     const [income,setIncome] = useState(0)
     const [expense , setExpense] = useState(0)
+    // const {user}=useAuth();
+    // const {uid}=user;
     useEffect(() => {
         const fetchTransactions = async() => {
             try {
-                const res = await fetch(url+'.json');
+                const res = await fetch(url+`/${'123'}.json`);
                 if(!res.ok) {
                     throw new Error("Failed to fetch the transactions")
                 }
@@ -54,9 +57,9 @@ const BudgetProvider = (props) => {
         setExpense(newExpense)
     },[transactions])
 
-    const addToTransaction = async(transaction) => {
+    const addToTransaction = async(userId,transaction) => {
         try {
-            const res = await fetch(url+'.json',{
+            const res = await fetch(url+`/${userId}.json`,{
                 method:"post",
                 body : JSON.stringify(transaction)
             });
@@ -76,9 +79,9 @@ const BudgetProvider = (props) => {
             return;
         }
     }
-    const deleteFromTransaction = async(id) => {
+    const deleteFromTransaction = async(userId,id) => {
         try {
-            const res = await fetch(url+`/${id}.json`,{
+            const res = await fetch(url+`/${userId}/${id}.json`,{
                 method:"delete"
             });
             if(!res.ok) {

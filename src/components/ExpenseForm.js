@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAuth } from '../store/AuthProvider';
 import { useBudget } from '../store/BudgetProvider';
 import styles from './Expenseform.module.css'
 const initialState = {type:"income",title:"",amount:""};
@@ -9,6 +10,9 @@ const ExpenseForm = () => {
         amount:''
     })
     const {addToTransaction} = useBudget();
+    // const {user}=useAuth();
+    // const {uid}=user;
+
     const handleChange = (e) => {
         const {name,value} = e.target;
         setExpeseData((prevState) => {
@@ -31,7 +35,7 @@ const ExpenseForm = () => {
         if(!formIsValid) {
           return ;
         }
-        addToTransaction(expenseData);
+        addToTransaction(null,expenseData);
         setExpeseData({
             ...expenseData,
             title:"",
