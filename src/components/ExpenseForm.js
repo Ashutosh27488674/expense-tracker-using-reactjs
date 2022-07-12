@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAuth } from '../store/AuthProvider';
+// import { useAuth } from '../store/AuthProvider';
 import { useBudget } from '../store/BudgetProvider';
 import styles from './Expenseform.module.css'
 const initialState = {type:"income",title:"",amount:""};
